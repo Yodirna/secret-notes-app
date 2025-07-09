@@ -1,0 +1,11 @@
+# Ignore dependencies, Docker will install them
+node_modules
+
+# Ignore build output
+build
+
+# Ignore git folder
+.git
+
+# Ignore local environment files
+.env

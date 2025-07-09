@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: ./backend-fe
+    ports:
+      - "5001:5000"
+
+  frontend:
+    build: ./notes-fe
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    env_file:
+      - ./notes-fe/.env
