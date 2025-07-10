@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function App() {
-  const [title, setTitle] = useState("");           // NEW
+  const [title, setTitle] = useState("");        
   const [note, setNote] = useState("");
   const [passphrase, setPassphrase] = useState("");
   const [decryptedNote, setDecryptedNote] = useState("");
@@ -86,19 +86,19 @@ function App() {
             <div className="text-xs text-gray-400">Encrypted:</div>
             <div className="text-sm break-all mb-2">{n.encrypted}</div>
             <button
-              onClick={() => handleDecrypt(i)}
+              onClick={() => handleDecrypt(n.id)}
               className="text-blue-500 hover:underline"
             >
               Decrypt with passphrase
             </button>
             <button
               onClick={async () => {
-                await fetch(`${API}/note/${i}`, { method: "DELETE" });
+                await fetch(`${API}/note/${n.id}`, { method: "DELETE" });
                 fetchNotes(); // Refresh after delete
               }}
               className="text-red-500 hover:underline ml-4"
             >
-              Delete
+              Delete Note
             </button>
           </div>
         ))}

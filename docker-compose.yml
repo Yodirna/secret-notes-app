@@ -1,4 +1,17 @@
 services:
+
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_DB: notesdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
   backend:
     build: ./backend-fe
     ports:
@@ -12,3 +25,6 @@ services:
       - backend
     env_file:
       - ./notes-fe/.env
+
+volumes:
+  db-data:
